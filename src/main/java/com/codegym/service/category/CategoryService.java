@@ -10,7 +10,7 @@ public class CategoryService implements ICategoryService{
     ICategoryDao categoryDao = new CategoryDao();
     @Override
     public List<Category> getAll() {
-        return null;
+        return categoryDao.getAll();
     }
 
     @Override
