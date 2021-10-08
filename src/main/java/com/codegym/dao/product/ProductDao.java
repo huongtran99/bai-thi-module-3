@@ -50,6 +50,7 @@ public class ProductDao implements IProductDao{
         try {
             PreparedStatement statement = connection.prepareStatement("update product set productName = ?, price = ?, amount = ?, color = ?, description = ?, categoryId = ? where  productId = ?");
             getProduct(product, statement);
+            statement.setInt(7,product.getProductId());
             isEdit = statement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -47,7 +47,7 @@ public class ProductServlet extends HttpServlet {
     private void showProductDeleteFrom(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("productId"));
         Product oldProduct = productService.findById(id);
-        List<Category> categories = categoryService.getAll();
+        Category categories = categoryService.findById(oldProduct.getCategoryId());
         RequestDispatcher dispatcher;
         if (oldProduct == null) {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
@@ -120,7 +120,7 @@ public class ProductServlet extends HttpServlet {
                 deleteProduct(request, response);
                 break;
             }
-            case "buy": {
+            case "edit": {
                 editProduct(request, response);
                 break;
             }
@@ -135,8 +135,7 @@ public class ProductServlet extends HttpServlet {
         String color = request.getParameter("color");
         String description = request.getParameter("description");
         int categoryId = Integer.parseInt(request.getParameter("category"));
-        Product product = new Product(productId, name, price, amount, color, description);
-        product.setCategoryId(categoryId);
+        Product product = new Product(productId, name, price, amount, color, description,categoryId);
         boolean isEdit = productService.update(productId, product);
         String message = "";
         if (isEdit) {

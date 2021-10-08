@@ -44,7 +44,7 @@
                     <label for="category" class="form-label">Category</label>
                     <select name="category" id="category">
                         <c:forEach items="${categories}" var="category">
-                            <option value="${category.categoryId}">${category.categoryName}</option>
+                            <option value="${category.categoryId}" name="category">${category.categoryName}</option>
                         </c:forEach>
                     </select>
                 </div>

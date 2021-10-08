@@ -40,7 +40,11 @@ public class ProductService implements IProductService{
 
     @Override
     public Product findById(int id) {
-        return productDao.findById(id);
+        Product products = productDao.findById(id);
+        Category category = categoryDao.findById(products.getCategoryId());
+        products.setCategory(category);
+        return products;
+
     }
 
     @Override

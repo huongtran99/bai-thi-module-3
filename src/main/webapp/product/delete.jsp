@@ -24,9 +24,6 @@
         <p>${product.color}</p>
     </div>
 
-    <div>
-        <p>${categories.category.categoryName}</p>
-    </div>
     <button>Delete</button>
 </form>
 </body>
